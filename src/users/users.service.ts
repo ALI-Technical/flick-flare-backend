@@ -10,7 +10,7 @@ export class UsersService {
   constructor(
     @InjectRepository(User)
     private usersRepo: Repository<User>,
-  ) {}
+  ) { }
 
   async create(dto: CreateUserDto) {
     const hashedPassword = await bcrypt.hash(dto.password, 10);
@@ -21,6 +21,10 @@ export class UsersService {
     });
 
     return this.usersRepo.save(user);
+  }
+
+  findByEmail(email: string) {
+    return this.usersRepo.findOne({ where: { email } });
   }
 
   findAll() {
