@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { MediaModule } from './media/media.module';
 
 @Module({
   imports: [
@@ -20,7 +21,8 @@ import { AuthModule } from './auth/auth.module';
       synchronize: true // will remove later
     }),
     UsersModule,
-    AuthModule
+    AuthModule,
+    MediaModule
   ],
   controllers: [AppController],
   providers: [AppService],
