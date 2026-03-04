@@ -1,5 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
 
+export enum MediaType {
+  MOVIE = 'movie',
+  TVSHOW = 'tvshow'
+}
 @Entity()
 export class Media {
   @PrimaryGeneratedColumn('uuid')
@@ -11,8 +15,12 @@ export class Media {
   @Column({ type: 'text', nullable: true })
   description: string;
 
-  @Column()
-  type: string;
+  @Column({
+    type: "enum",
+    enum: MediaType,
+    default: null
+  })
+  type: MediaType;
 
   @Column({ nullable: true })
   releaseYear: number;
